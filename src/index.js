@@ -1,19 +1,35 @@
-import React from 'react';  // use javascript es6 to import react module
-import ReactDom from 'react-dom'; // has the render() method toinject JS as HTML into DOM
+import React from 'react';  
+import ReactDom from 'react-dom'; 
 
-function Greeting(){
+import './index.css'; 
+
+function Booklist(){
   return (
-    <div>
-      <Person />
-      <Message />
-    </div>
+    <section className='booklist'>
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+    </section>
   );
 }
 
 // building Components
-const Person = () => <h2>Mark Freeman</h2>
-const Message = () => {
-  return <p>This is my message</p>
+const Book = () => {
+  return (
+    <article className='book'>
+      <Image />
+      <Title />
+      <Author />
+    </article>
+  );
 }
 
-ReactDom.render(<Greeting />, document.getElementById('root'));
+const Image = () => <img src="https://m.media-amazon.com/images/I/51oZCDb0JNL._AC_UL320_.jpg" alt="road to react book cover"/>
+const Title = () => <h1>The Road to React: Your journey to master plain yet pragmatic React.js</h1>;
+const Author = () => <h4>Robin Wieruch</h4>
+
+ReactDom.render(<Booklist />, document.getElementById('root'));
