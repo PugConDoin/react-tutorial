@@ -3,48 +3,45 @@ import ReactDom from 'react-dom';
 
 // CSS
 import './index.css'; 
-// setup vars
-const book1 = {
-  img: 'https://m.media-amazon.com/images/I/51oZCDb0JNL._AC_UL320_.jpg',
-  alt: 'road to react book cover image',
-  title: 'The Road to React: Your journey to master plain yet pragmatic React.js',
-  author: 'Robin Wieruch'
-};
+// create an array of books
+const books = [
+  {
+    img: 'https://m.media-amazon.com/images/I/51oZCDb0JNL._AC_UL320_.jpg',
+    alt: 'road to react book cover image',
+    title: 'The Road to React: Your journey to master plain yet pragmatic React.js',
+    author: 'Robin Wieruch'
+  },
+  {
+    img: 'https://images-na.ssl-images-amazon.com/images/I/51Kwaw5nInL._SX379_BO1,204,203,200_.jpg',
+    alt: 'learning react book cover image',
+    title: 'Learning React: Modern Patterns for Developing React Apps',
+    author: 'Eve Porcello, Alex Banks'
+  },
+  {
+    img: 'https://m.media-amazon.com/images/I/71Yd2ACrDcL._AC_UY218_.jpg',
+    alt: 'fullstack react book cover image',
+    title: 'Fullstack React: The Complete Guide to ReactJS and Friends',
+    author: 'Anthony Accomazzo, Nate Murray, Ari Lerner'
+  },
+];
 
-const book2 = {
-  img: 'https://images-na.ssl-images-amazon.com/images/I/51Kwaw5nInL._SX379_BO1,204,203,200_.jpg',
-  alt: 'learning react book cover image',
-  title: 'Learning React: Modern Patterns for Developing React Apps',
-  author: 'Eve Porcello, Alex Banks'
-};
-
+// use map to create a new array of the books object props
+// create a new variable 'book', to access the props
 function Booklist(){
   return (
     <section className='booklist'>
-      <Book 
-        img={book1.img} 
-        alt={book1.alt} 
-        title={book1.title} 
-        author={book1.author} 
-      >
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum impedit ad eius illum rerum libero doloremque consequuntur in nemo voluptatem, quisquam, labore mollitia.
-        </p>
-      </Book>  
-    
-      <Book 
-        img={book2.img} 
-        alt={book2.alt} 
-        title={book2.title} 
-        author={book2.author} 
-      />
+      {books.map((book)=>{
+        return (
+          <Book book={book}></Book>
+        );
+      })}
     </section>
   );
 }
 
-// building Book component
-// and destructure object props in function parameter
+
 const Book = (props) => { 
-  const { img, alt, title, author, children } = props;
+  const { img, alt, title, author } = props.book;
   return (
       <article className='book'>
         <img
@@ -53,7 +50,6 @@ const Book = (props) => {
         />
       <h1>{title}</h1>
       <h4>{author}</h4>
-      {children}
     </article>
   );
 };
