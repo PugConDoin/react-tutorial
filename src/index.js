@@ -3,8 +3,17 @@ import ReactDom from 'react-dom'; // has the render() method toinject JS as HTML
 
 function Greeting(){
   return (
-  <h4>this is Mark and this is my first component</h4>
+    <div>
+      <Person />
+      <Message />
+    </div>
   );
+}
+
+// building Components
+const Person = () => <h2>Mark Freeman</h2>
+const Message = () => {
+  return <p>This is my message</p>
 }
 
 ReactDom.render(<Greeting />, document.getElementById('root'));
